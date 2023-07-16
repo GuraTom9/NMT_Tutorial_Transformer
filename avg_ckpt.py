@@ -42,9 +42,9 @@ def main():
 
     output_path = "model/check_point/avg_check_point.pt"
 
-    with open("/home/ogura/workspace/v2_transformer_nmt/data/src2idx.pkl", 'rb') as f:
+    with open("data/src2idx.pkl", 'rb') as f:
         src2idx = pickle.load(f)
-    with open("/home/ogura/workspace/v2_transformer_nmt/data/tgt2idx.pkl", 'rb') as f:
+    with open("data/tgt2idx.pkl", 'rb') as f:
         tgt2idx = pickle.load(f)
 
     PAD = src2idx["<PAD>"]

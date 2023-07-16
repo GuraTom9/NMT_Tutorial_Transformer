@@ -118,14 +118,14 @@ def main():
     SRC_LANG = "en"
     TGT_LANG = "ja"
 
-    TRAIN_SRC_CORPUS_PATH = "/home/ogura/workspace/v2_transformer_nmt/data/train-1_top100000.{}.txt".format(SRC_LANG)
-    TRAIN_TGT_CORPUS_PATH = "/home/ogura/workspace/v2_transformer_nmt/data/train-1_top100000.{}.txt".format(TGT_LANG)
+    TRAIN_SRC_CORPUS_PATH = "data/train-1_top100000.{}.txt".format(SRC_LANG)
+    TRAIN_TGT_CORPUS_PATH = "data/train-1_top100000.{}.txt".format(TGT_LANG)
 
-    DEV_SRC_CORPUS_PATH = "/home/ogura/workspace/v2_transformer_nmt/data/dev.{}.txt".format(SRC_LANG)
-    DEV_TGT_CORPUS_PATH = "/home/ogura/workspace/v2_transformer_nmt/data/dev.{}.txt".format(TGT_LANG)
+    DEV_SRC_CORPUS_PATH = "data/dev.{}.txt".format(SRC_LANG)
+    DEV_TGT_CORPUS_PATH = "data/dev.{}.txt".format(TGT_LANG)
 
-    TEST_SRC_CORPUS_PATH = "/home/ogura/workspace/v2_transformer_nmt/data/test.{}.txt".format(SRC_LANG)
-    TEST_TGT_CORPUS_PATH = "/home/ogura/workspace/v2_transformer_nmt/data/test.{}.txt".format(TGT_LANG)
+    TEST_SRC_CORPUS_PATH = "data/test.{}.txt".format(SRC_LANG)
+    TEST_TGT_CORPUS_PATH = "data/test.{}.txt".format(TGT_LANG)
 
     # ハイパーパラメータの設定
     max_length = 150
@@ -186,7 +186,7 @@ def main():
     src_test_file = TEST_SRC_CORPUS_PATH
 
     src2idx = create_dictionary(src_train_file)
-    with open("/home/ogura/workspace/v2_transformer_nmt/data/src2idx.pkl", 'wb') as f:
+    with open("data/src2idx.pkl", 'wb') as f:
         pickle.dump(src2idx, f)
 
     src_train_idx = token2idx(src_train_file, src2idx)
@@ -199,7 +199,7 @@ def main():
     tgt_test_file = TEST_TGT_CORPUS_PATH
 
     tgt2idx = create_dictionary(tgt_train_file)
-    with open("/home/ogura/workspace/v2_transformer_nmt/data/tgt2idx.pkl", 'wb') as f:
+    with open("data/tgt2idx.pkl", 'wb') as f:
         pickle.dump(tgt2idx, f)
 
     tgt_train_idx = token2idx(tgt_train_file, tgt2idx)
@@ -214,13 +214,13 @@ def main():
     src_dict_size = len(src2idx)
     tgt_dict_size = len(tgt2idx)
 
-    create_idx_pair(src_train_idx, tgt_train_idx, "/home/ogura/workspace/v2_transformer_nmt/data/ja-en_train_idx.pkl")
-    create_idx_pair(src_dev_idx, tgt_dev_idx, "/home/ogura/workspace/v2_transformer_nmt/data/ja-en_dev_idx.pkl")
-    create_idx_pair(src_test_idx, tgt_test_idx, "/home/ogura/workspace/v2_transformer_nmt/data/ja-en_test_idx.pkl")
+    create_idx_pair(src_train_idx, tgt_train_idx, "data/ja-en_train_idx.pkl")
+    create_idx_pair(src_dev_idx, tgt_dev_idx, "data/ja-en_dev_idx.pkl")
+    create_idx_pair(src_test_idx, tgt_test_idx, "data/ja-en_test_idx.pkl")
 
-    src_train_idx_list, tgt_train_idx_list = load_data_from_pickle("/home/ogura/workspace/v2_transformer_nmt/data/ja-en_train_idx.pkl")
-    src_dev_idx_list, tgt_dev_idx_list = load_data_from_pickle("/home/ogura/workspace/v2_transformer_nmt/data/ja-en_dev_idx.pkl")
-    src_test_idx_list, tgt_test_idx_list = load_data_from_pickle("/home/ogura/workspace/v2_transformer_nmt/data/ja-en_test_idx.pkl")
+    src_train_idx_list, tgt_train_idx_list = load_data_from_pickle("data/ja-en_train_idx.pkl")
+    src_dev_idx_list, tgt_dev_idx_list = load_data_from_pickle("data/ja-en_dev_idx.pkl")
+    src_test_idx_list, tgt_test_idx_list = load_data_from_pickle("data/ja-en_test_idx.pkl")
 
     exit()
 
