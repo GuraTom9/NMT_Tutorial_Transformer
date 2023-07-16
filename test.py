@@ -15,7 +15,7 @@ from modules.preprocess import load_data_from_pickle
 def main():
     TGT_LANG = "ja"
     
-    TEST_TGT_CORPUS_PATH = f"/home/ogura/workspace/v2_transformer_nmt/data/test.{TGT_LANG}.txt"
+    TEST_TGT_CORPUS_PATH = f"data/test.{TGT_LANG}.txt"
 
     batch_size = 64
     dropout = 0.1
@@ -35,9 +35,9 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print("device:", device)
 
-    with open("/home/ogura/workspace/v2_transformer_nmt/data/src2idx.pkl", 'rb') as f:
+    with open("data/src2idx.pkl", 'rb') as f:
         src2idx = pickle.load(f)
-    with open("/home/ogura/workspace/v2_transformer_nmt/data/tgt2idx.pkl", 'rb') as f:
+    with open("data/tgt2idx.pkl", 'rb') as f:
         tgt2idx = pickle.load(f)
     idx2src = {v: k for k, v in src2idx.items()}
     idx2tgt = {v: k for k, v in tgt2idx.items()}
@@ -47,7 +47,7 @@ def main():
     src_dict_size = len(src2idx)
     tgt_dict_size = len(tgt2idx)
 
-    src_test_idx_list, tgt_test_idx_list = load_data_from_pickle("/home/ogura/workspace/v2_transformer_nmt/data/ja-en_test_idx.pkl")
+    src_test_idx_list, tgt_test_idx_list = load_data_from_pickle("data/ja-en_test_idx.pkl")
 
     # データローダーの作成
     test_data = dataset.MyDataset(src_data=src_test_idx_list, tgt_data=tgt_test_idx_list)
