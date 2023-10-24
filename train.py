@@ -222,8 +222,6 @@ def main():
     src_dev_idx_list, tgt_dev_idx_list = load_data_from_pickle("data/ja-en_dev_idx.pkl")
     src_test_idx_list, tgt_test_idx_list = load_data_from_pickle("data/ja-en_test_idx.pkl")
 
-    exit()
-
     # データローダーの作成
     train_data = dataset.MyDataset(src_data=src_train_idx_list, tgt_data=tgt_train_idx_list)
     train_loader = DataLoader(train_data, batch_size=batch_size, collate_fn=dataset.paired_collate_fn, shuffle=True)

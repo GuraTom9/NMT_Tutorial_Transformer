@@ -48,14 +48,6 @@ def translate(PAD, BOS, EOS, max_len, dictionary, pos_enc,
                 
                 dec_pos_enc = pos_enc[:tgt_sent_len, :].unsqueeze(0)
                 dec_pos_enc = dec_pos_enc.expand(sent_num, -1, -1).to(device)   # [sent_num, tgt_sent_len, d_model]
-                
-                print("log")
-                print(dec_self_attn_mask.size())
-                print(dec_src_tgt_mask.size())
-                print(in_tgt.size())
-                print(encoder_output.size())
-                print(dec_pos_enc.size())
-                exit()
 
                 output = transformer.decoder(in_tgt, encoder_output, dec_pos_enc,
                                              dec_self_attn_mask, dec_src_tgt_mask)

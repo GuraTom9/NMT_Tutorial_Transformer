@@ -17,6 +17,8 @@ def main():
     
     TEST_TGT_CORPUS_PATH = f"data/test.{TGT_LANG}.txt"
 
+    beam_search = True
+
     batch_size = 64
     dropout = 0.1
     d_ff = 2048
@@ -24,8 +26,6 @@ def main():
     init = True
     parallel_size = 8
     sub_layer_num = 6
-
-    beam_search = True
 
     # モデル読み込み
     model_name = "model/check_point/avg_check_point.pt"
